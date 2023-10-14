@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="bytebank.Util\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bytebank.Util\" />
+  </ItemGroup>
 </Project>

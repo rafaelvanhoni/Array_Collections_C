@@ -1,4 +1,7 @@
-﻿using bytebank_ATENDIMENTO.bytebank.Atendimento;
+﻿using bytebank.Modelos.Conta;
+using bytebank_ATENDIMENTO.bytebank.Atendimento;
+using bytebank_ATENDIMENTO.bytebank.Util;
+
 Console.WriteLine("Boas Vindas ao ByteBank, Atendimento.");
 //new ByteBankAtendimento().AtendimentoCliente();
 
@@ -112,7 +115,7 @@ double MediaDaAmostra(double[] amostra)
 
 //TestaArrayDePalavras();
 
-
+/*
 Array amostra = Array.CreateInstance(typeof(double), 5);
 amostra.SetValue(5.9, 0);
 amostra.SetValue(1.8, 1);
@@ -121,9 +124,46 @@ amostra.SetValue(10, 3);
 amostra.SetValue(6.9, 4);
 
 
-//TestaMediana(amostra);
+TestaMediana(amostra);
 
 double media = MediaDaAmostra((double[])amostra);
 Console.WriteLine($"\r\nA média da amostra é {Math.Round(media, 2)}");
+*/
+
+void TestaArrayDeContasCorrentes()
+{
+    ListaDeContasCorrentes listaDeContas = new ListaDeContasCorrentes();
+
+    listaDeContas.Adicionar(new ContaCorrente(874, "123123-A"));
+    listaDeContas.Adicionar(new ContaCorrente(874, "222333-B"));
+    listaDeContas.Adicionar(new ContaCorrente(875, "123456-X"));
+    listaDeContas.Adicionar(new ContaCorrente(875, "123456-X"));
+    listaDeContas.Adicionar(new ContaCorrente(875, "123456-X"));
+    listaDeContas.Adicionar(new ContaCorrente(875, "123456-X"));
+    listaDeContas.Adicionar(new ContaCorrente(875, "123456-X"));
+    listaDeContas.Adicionar(new ContaCorrente(875, "123456-X"));
+    listaDeContas.Adicionar(new ContaCorrente(875, "123456-X"));
+
+    var contaDoRafael = new ContaCorrente(222, "999999-A");
+    listaDeContas.Adicionar(contaDoRafael);
+    listaDeContas.ExibirLista();
+
+    Console.WriteLine("============");
+    Console.ReadKey();
+
+    listaDeContas.Remover(contaDoRafael);
+
+    ContaCorrente? maiorConta = listaDeContas.MaiorConta();
+
+    if (maiorConta != null)
+    {
+        Console.WriteLine($"Conta: {maiorConta.Conta} - Agencia: {maiorConta.Numero_agencia} - Saldo: {maiorConta.Saldo}");
+    }
+
+    listaDeContas.ExibirLista();
+
+}
+
+TestaArrayDeContasCorrentes();
 
 Console.ReadKey();
